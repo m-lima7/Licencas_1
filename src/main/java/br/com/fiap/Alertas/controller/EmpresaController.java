@@ -9,30 +9,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/empresas")
+@RequestMapping("/api")
 public class EmpresaController {
 
     @Autowired
     private EmpresaService empresaService;
 
 
-    @GetMapping
+    @GetMapping("/empresas")
     public ResponseEntity<List<Empresa>> getAll(){
         return ResponseEntity.ok(empresaService.listaEmpresas());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/empresa/{id}")
     public Empresa getById(@PathVariable long id){
         return empresaService.buscaEmpresa(id);
     }
 
-    @PostMapping
+    @PostMapping("/empresas")
     public ResponseEntity<Empresa> criaEmpresa(@RequestBody Empresa empresa){
         Empresa createdempresa = empresaService.criarEmpresa(empresa);
         return ResponseEntity.ok().body(createdempresa);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/empresas/{id}")
     public ResponseEntity<Empresa> alteraEmpresa(
             @PathVariable Long id,
             @RequestBody Empresa empresa){
@@ -41,7 +41,7 @@ public class EmpresaController {
         return ResponseEntity.ok().body(emp);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/empresas/{id}")
     public ResponseEntity<Void> deleteEmpresa(@PathVariable Long id){
         empresaService.deleteEmpresa(id);
         return ResponseEntity.noContent().build();

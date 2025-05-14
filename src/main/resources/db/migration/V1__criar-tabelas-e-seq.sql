@@ -23,7 +23,7 @@ CREATE SEQUENCE EMPRESAS_SEQ
     NOCYCLE;
 
 -- Criação da tabela empresas
-CREATE TABLE t_empresa (
+CREATE TABLE t_empresas (
                            id_empresa INTEGER PRIMARY KEY NOT NULL,
                            nome_empresa VARCHAR2(100) NOT NULL,
                            cnpj NUMBER NOT NULL
